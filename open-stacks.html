@@ -620,10 +620,14 @@
         <div class="form-row">
           <label for="f-category">Category</label>
           <select id="f-category">
+            <option value="Fiction">Fiction</option>
+            <option value="Novel">Novel</option>
             <option value="Adventure Novel">Adventure Novel</option>
+            <option value="Crime Fiction">Crime Fiction</option>
             <option value="Fantasy">Fantasy</option>
             <option value="Science Fiction">Science Fiction</option>
             <option value="Mystery & Thriller">Mystery & Thriller</option>
+            <option value="Horror">Horror</option>
             <option value="Romance">Romance</option>
             <option value="Classic Literature">Classic Literature</option>
             <option value="Poetry">Poetry</option>
@@ -693,6 +697,116 @@
     </div>
   </section>
 
+  <!-- EDIT VIEW -->
+  <section class="view" id="view-edit">
+    <h2 style="font-size:1.5rem; margin-bottom:0.3rem;">Edit this book</h2>
+    <p class="status-line" style="margin-top:0;">Change the title, author, cover, or content below. Leave the content as-is if you don't need to replace it.</p>
+
+    <div class="form-card">
+      <form id="edit-form">
+        <div class="form-row">
+          <label for="e-title">Title</label>
+          <input type="text" id="e-title" placeholder="The Odyssey">
+        </div>
+        <div class="form-row">
+          <label for="e-author">Author</label>
+          <input type="text" id="e-author" placeholder="Homer, trans. Samuel Butler">
+        </div>
+        <div class="form-row">
+          <label for="e-license">License</label>
+          <select id="e-license">
+            <option value="CC0">CC0 — Public Domain Dedication</option>
+            <option value="CC BY">CC BY — Attribution</option>
+            <option value="CC BY-SA">CC BY-SA — Attribution-ShareAlike</option>
+            <option value="CC BY-NC">CC BY-NC — Attribution-NonCommercial</option>
+            <option value="CC BY-ND">CC BY-ND — Attribution-NoDerivs</option>
+            <option value="CC BY-NC-SA">CC BY-NC-SA — Attribution-NonCommercial-ShareAlike</option>
+            <option value="Open Textbook">Open Textbook License</option>
+            <option value="Other Open">Other open license (describe below)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="e-category">Category</label>
+          <select id="e-category">
+            <option value="Fiction">Fiction</option>
+            <option value="Novel">Novel</option>
+            <option value="Adventure Novel">Adventure Novel</option>
+            <option value="Crime Fiction">Crime Fiction</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Mystery & Thriller">Mystery & Thriller</option>
+            <option value="Horror">Horror</option>
+            <option value="Romance">Romance</option>
+            <option value="Classic Literature">Classic Literature</option>
+            <option value="Poetry">Poetry</option>
+            <option value="Drama & Plays">Drama & Plays</option>
+            <option value="Nonfiction">Nonfiction</option>
+            <option value="History">History</option>
+            <option value="Politics">Politics</option>
+            <option value="Biography & Memoir">Biography & Memoir</option>
+            <option value="Science & Technology">Science & Technology</option>
+            <option value="Textbook & Educational">Textbook & Educational</option>
+            <option value="Spirituality">Spirituality</option>
+            <option value="Philosophy">Philosophy</option>
+            <option value="Self-Help">Self-Help</option>
+            <option value="Religious / Zen Philosophy">Religious / Zen Philosophy</option>
+            <option value="Children's Book">Children's Book</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="e-attribution">Attribution / license note (optional)</label>
+          <textarea id="e-attribution" placeholder="e.g. Originally published by OpenStax, CC BY 4.0. Adapted from the 2023 edition."></textarea>
+        </div>
+        <div class="form-row">
+          <label for="e-description">Short description (optional)</label>
+          <textarea id="e-description" placeholder="A one- or two-sentence description for the catalog card."></textarea>
+        </div>
+        <div class="form-row">
+          <label for="e-passcode">Delete passcode (optional)</label>
+          <div style="position:relative;">
+            <input type="password" id="e-passcode" placeholder="Leave blank to keep the current passcode" style="padding-right:4.2rem;">
+            <button type="button" id="e-passcode-toggle" class="mono" style="position:absolute; right:0.4rem; top:50%; transform:translateY(-50%); border:none; background:transparent; color:var(--navy); font-size:0.7rem; padding:0.3rem 0.5rem; cursor:pointer;">Show</button>
+          </div>
+          <div class="form-hint">Leave blank to keep the passcode this book already has (or leave it open if it never had one). Type a new one here to replace it.</div>
+        </div>
+        <div class="form-row">
+          <label for="e-cover">Cover image</label>
+          <div id="e-current-cover" style="display:none; margin-bottom:0.5rem;"></div>
+          <label class="file-btn" for="e-cover">Choose new cover image</label>
+          <input type="file" id="e-cover" accept="image/*" style="display:none;">
+          <div class="pdf-picked" id="e-cover-picked" style="display:none;"></div>
+          <div class="form-hint">Leave as-is to keep the current cover. Choosing a new image replaces it.</div>
+        </div>
+
+        <div class="form-row">
+          <label>Content</label>
+          <div class="radio-group">
+            <label><input type="radio" name="edit-content-type" value="text"> Paste the full text</label>
+            <label><input type="radio" name="edit-content-type" value="pdf"> Upload a PDF</label>
+            <label><input type="radio" name="edit-content-type" value="link"> Link to where it's hosted</label>
+          </div>
+          <textarea id="e-content-text" class="content-area" placeholder="Paste the complete text of the book here." style="display:none;"></textarea>
+          <input type="url" id="e-content-url" placeholder="https://" style="display:none;">
+          <div id="e-pdf-upload-wrap" style="display:none;">
+            <div id="e-current-pdf" style="display:none; margin-bottom:0.5rem;"></div>
+            <label class="file-btn" for="e-content-pdf">Choose new PDF file</label>
+            <input type="file" id="e-content-pdf" accept="application/pdf" style="display:none;">
+            <div class="pdf-picked" id="e-pdf-picked" style="display:none;"></div>
+          </div>
+          <div class="form-hint" id="e-content-hint">Leave as-is to keep the current content, or switch the option above to replace it.</div>
+        </div>
+
+        <div class="field-error" id="edit-form-error" style="display:none;"></div>
+
+        <div class="form-actions">
+          <button type="button" id="save-edit-btn" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-ghost" id="cancel-edit">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <!-- READER VIEW -->
   <section class="view" id="view-reader">
     <div class="reader-bar">
@@ -746,7 +860,7 @@
   }
 (function () {
   var LICENSES = ["CC0","CC BY","CC BY-SA","CC BY-NC","CC BY-ND","CC BY-NC-SA","Open Textbook","Other Open"];
-  var CATEGORIES = ["Adventure Novel","Fantasy","Science Fiction","Mystery & Thriller","Romance","Classic Literature","Poetry","Drama & Plays","Nonfiction","History","Politics","Biography & Memoir","Science & Technology","Textbook & Educational","Spirituality","Philosophy","Self-Help","Religious / Zen Philosophy","Children's Book","Other"];
+  var CATEGORIES = ["Fiction","Novel","Adventure Novel","Crime Fiction","Fantasy","Science Fiction","Mystery & Thriller","Horror","Romance","Classic Literature","Poetry","Drama & Plays","Nonfiction","History","Politics","Biography & Memoir","Science & Technology","Textbook & Educational","Spirituality","Philosophy","Self-Help","Religious / Zen Philosophy","Children's Book","Other"];
   var state = {
     books: [],
     loaded: false,
@@ -1032,10 +1146,26 @@
     var footer =
       '<div class="reader-footer">' +
         '<span class="read-hint mono">' + escapeHtml(callNumber(book)) + '</span>' +
-        '<button class="remove-link" id="remove-book">Remove from stacks</button>' +
+        '<span>' +
+          '<button class="remove-link" id="edit-book" style="margin-right:1rem;">Edit this book</button>' +
+          '<button class="remove-link" id="remove-book">Remove from stacks</button>' +
+        '</span>' +
       '</div>';
 
     container.innerHTML = head + body + footer;
+
+    document.getElementById('edit-book').addEventListener('click', async function () {
+      if (book.deleteHash) {
+        var entered = await openModal('Enter the passcode for "' + book.title + '" to edit it:', true);
+        if (entered === null) return;
+        var enteredHash = await sha256Hex(entered || '');
+        if (enteredHash !== book.deleteHash) {
+          showToast('Incorrect passcode — changes not allowed.');
+          return;
+        }
+      }
+      openEditForm(book);
+    });
 
     document.getElementById('remove-book').addEventListener('click', async function () {
       if (book.deleteHash) {
@@ -1533,6 +1663,356 @@
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Add to the stacks';
+    }
+  });
+
+  var editContentTypeRadios = document.querySelectorAll('input[name="edit-content-type"]');
+  var eTextArea = document.getElementById('e-content-text');
+  var eUrlInput = document.getElementById('e-content-url');
+  var ePdfWrap = document.getElementById('e-pdf-upload-wrap');
+  var eCurrentPdf = document.getElementById('e-current-pdf');
+  var ePdfInput = document.getElementById('e-content-pdf');
+  var ePdfPicked = document.getElementById('e-pdf-picked');
+  var eContentHint = document.getElementById('e-content-hint');
+  var ePdfBase64 = null;
+  var ePdfFileName = null;
+  var ePdfReading = false;
+  var eSaveBtn = document.getElementById('save-edit-btn');
+  var eCoverInput = document.getElementById('e-cover');
+  var eCoverPicked = document.getElementById('e-cover-picked');
+  var eCurrentCover = document.getElementById('e-current-cover');
+  var eCoverDataUrl = null;
+  var ePasscodeInput = document.getElementById('e-passcode');
+  var ePasscodeToggle = document.getElementById('e-passcode-toggle');
+  var editingBook = null;
+
+  ePasscodeToggle.addEventListener('click', function () {
+    if (ePasscodeInput.type === 'password') {
+      ePasscodeInput.type = 'text';
+      ePasscodeToggle.textContent = 'Hide';
+    } else {
+      ePasscodeInput.type = 'password';
+      ePasscodeToggle.textContent = 'Show';
+    }
+  });
+
+  editContentTypeRadios.forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      eTextArea.style.display = 'none';
+      eUrlInput.style.display = 'none';
+      ePdfWrap.style.display = 'none';
+      if (radio.value === 'text' && radio.checked) {
+        eTextArea.style.display = 'block';
+        eContentHint.textContent = 'This replaces the book\'s content with the text above.';
+      } else if (radio.value === 'link' && radio.checked) {
+        eUrlInput.style.display = 'block';
+        eContentHint.textContent = 'This replaces the book\'s content with a link instead.';
+      } else if (radio.value === 'pdf' && radio.checked) {
+        ePdfWrap.style.display = 'block';
+        eContentHint.textContent = 'Choose a new PDF under 700 KB to replace the current file, or leave it to keep the current one.';
+      }
+      updateEditSubmitState();
+    });
+  });
+
+  eCoverInput.addEventListener('change', function () {
+    var file = eCoverInput.files[0];
+    eCoverDataUrl = null;
+    if (!file) {
+      eCoverPicked.style.display = 'none';
+      return;
+    }
+    eCoverPicked.className = 'pdf-picked';
+    eCoverPicked.textContent = 'Processing ' + file.name + '…';
+    eCoverPicked.style.display = 'block';
+
+    resizeImageToDataURL(file, 300, 0.75).then(function (dataUrl) {
+      eCoverDataUrl = dataUrl;
+      var kb = Math.round((dataUrl.length * 0.75) / 1024);
+      eCoverPicked.className = 'pdf-picked';
+      eCoverPicked.textContent = 'Ready: ' + file.name + ' (~' + kb + ' KB after resizing)';
+    }).catch(function (err) {
+      eCoverDataUrl = null;
+      eCoverPicked.className = 'pdf-picked warn';
+      eCoverPicked.textContent = 'Could not process that image. Try a different file.';
+      reportError(err);
+    });
+  });
+
+  ePdfInput.addEventListener('change', function () {
+    var file = ePdfInput.files[0];
+    ePdfBase64 = null;
+    ePdfFileName = null;
+    ePdfReading = false;
+    updateEditSubmitState();
+    if (!file) {
+      ePdfPicked.style.display = 'none';
+      return;
+    }
+    var sizeLabel = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+    if (file.size > PDF_MAX_BYTES) {
+      ePdfPicked.className = 'pdf-picked warn';
+      ePdfPicked.textContent = file.name + ' (' + sizeLabel + ') — too large to store directly. Try linking to it instead.';
+      ePdfPicked.style.display = 'block';
+      return;
+    }
+    ePdfPicked.className = 'pdf-picked';
+    ePdfPicked.textContent = 'Reading ' + file.name + ' (' + sizeLabel + ')…';
+    ePdfPicked.style.display = 'block';
+    ePdfReading = true;
+    updateEditSubmitState();
+
+    var reader = new FileReader();
+    var readTimeout = setTimeout(function () {
+      if (ePdfReading) {
+        ePdfReading = false;
+        ePdfBase64 = null;
+        ePdfFileName = null;
+        ePdfPicked.className = 'pdf-picked warn';
+        ePdfPicked.textContent = 'Reading took too long. Try again, or use "Link to where it\'s hosted" instead.';
+        updateEditSubmitState();
+      }
+    }, 10000);
+
+    reader.onloadend = function () {
+      clearTimeout(readTimeout);
+      ePdfReading = false;
+      if (reader.error) {
+        ePdfBase64 = null;
+        ePdfFileName = null;
+        ePdfPicked.className = 'pdf-picked warn';
+        ePdfPicked.textContent = 'Could not read that file (' + reader.error.name + '). Try again or use a link instead.';
+        updateEditSubmitState();
+        return;
+      }
+      var result = reader.result || '';
+      var commaIndex = result.indexOf(',');
+      var base64 = commaIndex !== -1 ? result.slice(commaIndex + 1) : '';
+      if (!base64) {
+        ePdfBase64 = null;
+        ePdfFileName = null;
+        ePdfPicked.className = 'pdf-picked warn';
+        ePdfPicked.textContent = 'Could not process that file. Try a different PDF or use a link instead.';
+        updateEditSubmitState();
+        return;
+      }
+      ePdfBase64 = base64;
+      ePdfFileName = file.name;
+      ePdfPicked.className = 'pdf-picked';
+      ePdfPicked.textContent = 'Ready: ' + file.name + ' (' + sizeLabel + ')';
+      updateEditSubmitState();
+    };
+
+    try {
+      reader.readAsDataURL(file);
+    } catch (err) {
+      clearTimeout(readTimeout);
+      ePdfReading = false;
+      ePdfPicked.className = 'pdf-picked warn';
+      ePdfPicked.textContent = 'Could not read that file. Try again or use a link instead.';
+      updateEditSubmitState();
+    }
+  });
+
+  function updateEditSubmitState() {
+    var checkedRadio = document.querySelector('input[name="edit-content-type"]:checked');
+    var isPdfMode = checkedRadio && checkedRadio.value === 'pdf';
+    if (isPdfMode && ePdfReading) {
+      eSaveBtn.disabled = true;
+      eSaveBtn.textContent = 'Reading PDF…';
+    } else {
+      eSaveBtn.disabled = false;
+      eSaveBtn.textContent = 'Save changes';
+    }
+  }
+
+  function openEditForm(book) {
+    editingBook = book;
+    document.getElementById('edit-form').reset();
+    document.getElementById('e-title').value = book.title || '';
+    document.getElementById('e-author').value = book.author || '';
+    document.getElementById('e-license').value = book.license || 'CC0';
+    document.getElementById('e-category').value = book.category || 'Fiction';
+    document.getElementById('e-attribution').value = book.licenseNote || '';
+    document.getElementById('e-description').value = book.description || '';
+    ePasscodeInput.value = '';
+    ePasscodeInput.type = 'password';
+    ePasscodeToggle.textContent = 'Show';
+
+    eCoverDataUrl = null;
+    eCoverPicked.style.display = 'none';
+    if (book.coverImage) {
+      eCurrentCover.style.display = 'block';
+      eCurrentCover.innerHTML = '<img src="' + book.coverImage + '" alt="" style="width:80px; height:110px; object-fit:cover; border:1px solid var(--line-soft); border-radius:2px;">';
+    } else {
+      eCurrentCover.style.display = 'none';
+      eCurrentCover.innerHTML = '';
+    }
+
+    eTextArea.style.display = 'none';
+    eUrlInput.style.display = 'none';
+    ePdfWrap.style.display = 'none';
+    eTextArea.value = '';
+    eUrlInput.value = '';
+    ePdfBase64 = null;
+    ePdfFileName = null;
+    ePdfReading = false;
+    ePdfPicked.style.display = 'none';
+    eCurrentPdf.style.display = 'none';
+    eCurrentPdf.innerHTML = '';
+
+    document.querySelectorAll('input[name="edit-content-type"]').forEach(function (r) { r.checked = (r.value === book.contentType); });
+
+    if (book.contentType === 'text') {
+      eTextArea.style.display = 'block';
+      eTextArea.value = book.content || '';
+      eContentHint.textContent = 'This replaces the book\'s content with the text above.';
+    } else if (book.contentType === 'link') {
+      eUrlInput.style.display = 'block';
+      eUrlInput.value = book.sourceUrl || '';
+      eContentHint.textContent = 'This replaces the book\'s content with a link instead.';
+    } else if (book.contentType === 'pdf') {
+      ePdfWrap.style.display = 'block';
+      eCurrentPdf.style.display = 'block';
+      eCurrentPdf.textContent = 'Current file: ' + (book.fileName || 'existing PDF');
+      eContentHint.textContent = 'Choose a new PDF under 700 KB to replace the current file, or leave it to keep the current one.';
+    }
+
+    document.getElementById('edit-form-error').style.display = 'none';
+    updateEditSubmitState();
+    setView('edit');
+  }
+
+  document.getElementById('cancel-edit').addEventListener('click', function () {
+    setView('reader');
+  });
+
+  document.getElementById('edit-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+  });
+
+  document.getElementById('save-edit-btn').addEventListener('click', async function () {
+    var errorEl = document.getElementById('edit-form-error');
+    errorEl.style.display = 'none';
+    if (!editingBook) return;
+
+    try {
+      var title = document.getElementById('e-title').value.trim();
+      var author = document.getElementById('e-author').value.trim();
+      var license = document.getElementById('e-license').value;
+      var category = document.getElementById('e-category').value;
+      var licenseNote = document.getElementById('e-attribution').value.trim();
+      var description = document.getElementById('e-description').value.trim();
+      var checkedRadio = document.querySelector('input[name="edit-content-type"]:checked');
+      var contentType = checkedRadio ? checkedRadio.value : editingBook.contentType;
+      var contentText = eTextArea.value.trim();
+      var contentUrl = eUrlInput.value.trim();
+
+      if (!title || !author) {
+        errorEl.textContent = 'Title and author are required.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      if (contentType === 'text' && !contentText) {
+        errorEl.textContent = 'The text content can\'t be empty.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      if (contentType === 'link' && !/^https?:\/\/.+/.test(contentUrl)) {
+        errorEl.textContent = 'Enter a valid link starting with http:// or https://';
+        errorEl.style.display = 'block';
+        return;
+      }
+      if (contentType === 'pdf' && !ePdfBase64 && editingBook.contentType !== 'pdf') {
+        errorEl.textContent = 'Choose a PDF under 700 KB for this book.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      var newPasscode = ePasscodeInput.value;
+      var deleteHash = editingBook.deleteHash || null;
+      if (newPasscode) {
+        try {
+          deleteHash = await sha256Hex(newPasscode);
+        } catch (e) {
+          deleteHash = editingBook.deleteHash || null;
+        }
+      }
+
+      var newContent = editingBook.content || '';
+      var newFileName = editingBook.fileName || '';
+      var newSourceUrl = editingBook.sourceUrl || '';
+      if (contentType === 'text') {
+        newContent = contentText;
+        newFileName = '';
+        newSourceUrl = '';
+      } else if (contentType === 'link') {
+        newContent = '';
+        newFileName = '';
+        newSourceUrl = contentUrl;
+      } else if (contentType === 'pdf') {
+        if (ePdfBase64) {
+          newContent = ePdfBase64;
+          newFileName = ePdfFileName;
+        }
+        newSourceUrl = '';
+      }
+
+      var newCoverImage = eCoverDataUrl || editingBook.coverImage || null;
+      var newHasCover = !!newCoverImage;
+
+      var updatedBook = {
+        id: editingBook.id,
+        title: title,
+        author: author,
+        license: license,
+        category: category,
+        licenseNote: licenseNote,
+        description: description,
+        contentType: contentType,
+        content: newContent,
+        fileName: newFileName,
+        sourceUrl: newSourceUrl,
+        deleteHash: deleteHash,
+        hasCover: newHasCover,
+        addedAt: editingBook.addedAt || new Date().toISOString()
+      };
+
+      eSaveBtn.disabled = true;
+      eSaveBtn.textContent = 'Saving…';
+
+      if (!firebaseReady) {
+        throw new Error('Database not connected — this page needs to be hosted online to save changes.');
+      }
+
+      await withTimeout(
+        booksCollection.doc(editingBook.id).set(updatedBook),
+        8000,
+        'Saving took too long — the database may be unavailable right now.'
+      );
+      if (eCoverDataUrl) {
+        try {
+          await withTimeout(coversCollection.doc(editingBook.id).set({ image: eCoverDataUrl }), 8000, 'Saving the cover timed out.');
+        } catch (coverErr) {
+          reportError(coverErr);
+        }
+      }
+      updatedBook.coverImage = newCoverImage;
+
+      var idx = state.books.findIndex(function (b) { return b.id === editingBook.id; });
+      if (idx !== -1) { state.books[idx] = updatedBook; } else { state.books.unshift(updatedBook); }
+
+      showToast('Changes saved.');
+      editingBook = null;
+      renderGrid();
+      openReader(updatedBook.id);
+    } catch (err) {
+      errorEl.textContent = 'Could not save changes: ' + (err && err.message ? err.message : 'unknown error') + '. Please try again.';
+      errorEl.style.display = 'block';
+      reportError(err);
+    } finally {
+      eSaveBtn.disabled = false;
+      eSaveBtn.textContent = 'Save changes';
     }
   });
 
