@@ -850,10 +850,12 @@
   var firebaseReady = false;
   var db = null;
   var booksCollection = null;
+  var coversCollection = null;
   try {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
     booksCollection = db.collection('books');
+    coversCollection = db.collection('covers');
     firebaseReady = true;
   } catch (e) {
     firebaseReady = false;
