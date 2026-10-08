@@ -278,6 +278,10 @@
     line-height: 1.4;
     flex: 1;
     margin-bottom: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .card-foot {
@@ -1065,7 +1069,7 @@
     grid.className = 'grid';
     grid.innerHTML = list.map(function (b) {
       var coverHtml = b.coverImage
-        ? '<img src="' + b.coverImage + '" alt="" style="width:100%; height:120px; object-fit:cover; border:1px solid var(--line-soft); border-radius:2px; margin-bottom:0.6rem;">'
+        ? '<img src="' + b.coverImage + '" alt="" style="width:100%; height:160px; object-fit:contain; background:var(--paper); border:1px solid var(--line-soft); border-radius:2px; margin-bottom:0.6rem;">'
         : '';
       return '<div class="card" data-id="' + escapeHtml(b.id) + '">' +
         '<div class="card-callno">' + escapeHtml(callNumber(b)) + '</div>' +
@@ -1099,7 +1103,7 @@
     }
 
     var coverHtml = book.coverImage
-      ? '<img src="' + book.coverImage + '" alt="" style="width:110px; height:150px; object-fit:cover; border:1px solid var(--line); border-radius:2px; float:left; margin:0 1rem 0.6rem 0;">'
+      ? '<img src="' + book.coverImage + '" alt="" style="width:110px; height:150px; object-fit:contain; background:var(--paper); border:1px solid var(--line); border-radius:2px; float:left; margin:0 1rem 0.6rem 0;">'
       : '';
 
     var head =
@@ -1845,7 +1849,7 @@
     eCoverPicked.style.display = 'none';
     if (book.coverImage) {
       eCurrentCover.style.display = 'block';
-      eCurrentCover.innerHTML = '<img src="' + book.coverImage + '" alt="" style="width:80px; height:110px; object-fit:cover; border:1px solid var(--line-soft); border-radius:2px;">';
+      eCurrentCover.innerHTML = '<img src="' + book.coverImage + '" alt="" style="width:80px; height:110px; object-fit:contain; background:var(--paper); border:1px solid var(--line-soft); border-radius:2px;">';
     } else {
       eCurrentCover.style.display = 'none';
       eCurrentCover.innerHTML = '';
